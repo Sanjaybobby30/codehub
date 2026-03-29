@@ -12,7 +12,9 @@ app.use(cors());
 const { Server } = require("socket.io");
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "*" },
+ cors: {
+    origin: ["https://codehub-nnjavjk31-sanjaybobby30s-projects.vercel.app", "http://localhost:5173"],
+},
 });
 
 // ─── MongoDB (optional) ───────────────────────────────────────────────────────
