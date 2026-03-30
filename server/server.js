@@ -7,18 +7,20 @@ const cors = require("cors");
 const ACTIONS = require("./utils/actions");
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: [/\.vercel\.app$/, "http://localhost:5173"],
+}));
 
 const { Server } = require("socket.io");
 const server = http.createServer(app);
 const io = new Server(server, {
- cors: {
-    origin: ["https://codehub-nnjavjk31-sanjaybobby30s-projects.vercel.app", "http://localhost:5173"],
-},
+  cors: {
+    origin: [/\.vercel\.app$/, "http://localhost:5173"],
+  },
 });
 
 // ─── MongoDB (optional) ───────────────────────────────────────────────────────
-let User = null; // stays null if MongoDB is unavailable
+let User = null;
 
 const MONGO_URI = process.env.MONGO_URI;
 if (MONGO_URI && !MONGO_URI.includes("localhost")) {
@@ -52,13 +54,11 @@ function getRoomId(socketId) {
   return userSocketMap.find((u) => u.socketId === socketId)?.roomId;
 }
 
-// Check username uniqueness — uses DB if available, memory otherwise
 async function isUsernameTaken(roomId, username) {
   if (User) {
     const existing = await User.findOne({ roomId, username });
     return !!existing;
   }
-  // fallback: check in-memory map
   return userSocketMap.some((u) => u.roomId === roomId && u.username === username);
 }
 
@@ -67,7 +67,6 @@ async function saveUser(username, roomId) {
     const u = new User({ username, roomId });
     await u.save();
   }
-  // in-memory save happens when we push to userSocketMap below
 }
 
 async function removeUser(username, roomId) {
