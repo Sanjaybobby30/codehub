@@ -1,6 +1,8 @@
 # CodeHub — Real-time Collaborative Code Editor
 
-🚀 **Live Demo:** https://codehub-nnjavjk31-sanjaybobby30s-projects.vercel.app
+🚀 **Live Demo:** https://codehub-three-kappa.vercel.app
+
+🖥️ **Backend:** https://codehub-pnv7.onrender.com
 
 ## Features
 - 💻 Real-time collaborative code editing
