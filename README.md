@@ -1,5 +1,20 @@
-# Code Hub — Real-time Collaborative Code Editor
+# CodeHub — Real-time Collaborative Code Editor
 
+🚀 **Live Demo:** https://codehub-nnjavjk31-sanjaybobby30s-projects.vercel.app
+
+## Features
+- 💻 Real-time collaborative code editing
+- 💬 Live chat between users
+- 📁 File system with create/rename/delete
+- ▶️ Code execution in 60+ languages
+- 👥 Multi-user rooms with live presence
+
+## Tech Stack
+- **Frontend:** React, Vite, TailwindCSS, Socket.IO
+- **Backend:** Node.js, Express, Socket.IO
+- **Database:** MongoDB Atlas
+- **Code Execution:** Judge0 CE
+- **Deployed on:** Vercel (client) + Railway (server)
 A real-time collaborative coding environment with chat, file management, and code execution.
 
 ## Project Structure
